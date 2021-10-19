@@ -1,10 +1,15 @@
 import { Search, Favorite, Person, ShoppingBasket } from "@mui/icons-material";
-import { Container } from "@mui/material";
+import { Badge, Container } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 
-export const SearchSectionContainer = styled.div``
+export const SearchSectionContainer = styled.div`
+.MuiBadge-badge{
+    background-color: #188490 !important;
+    color: #FFF !important;
+}
+`
 export const CustomContainer = styled(Container)`
     height: 5rem;
     display: flex !important;

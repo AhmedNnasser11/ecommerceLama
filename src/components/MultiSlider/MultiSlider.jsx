@@ -36,7 +36,7 @@ const MultiSlider = ({ data, slideShow }) => {
     speed: 500,
     slidesToShow: !slideShow ? 5 : 4,
     slidesToScroll: 4,
-    // autoplay: true,
+    autoplay: true,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
     responsive: [
@@ -73,7 +73,7 @@ const MultiSlider = ({ data, slideShow }) => {
         <Slider {...settings}>
           {data.map((item) => (
             <div key={item.id} className="our__slide__bestSellars">
-              <Link className="img__wrapper" to="/">
+              <Link className="img__wrapper" to={`/products/${item.id}`}>
                 <img
                   className="img__slider__bestSellars"
                   src={item.image}

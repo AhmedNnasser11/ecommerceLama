@@ -1,4 +1,7 @@
-import React from "react";
+import { Badge } from "@mui/material";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCart, selectedProducts } from "../../features/products/ProductsSlice";
 import Drawer from "../DrawerComponent/Drawer";
 import {
   SearchSectionContainer,
@@ -16,6 +19,14 @@ import {
 } from "./SearchSectionStyle";
 
 const SearchSection = () => {
+
+  const { cart } = useSelector(selectedProducts);
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getCart())
+    
+  }, [dispatch])
   return (
     <SearchSectionContainer>
       <CustomContainer>
@@ -45,9 +56,11 @@ const SearchSection = () => {
           </li>
 
           <li>
-            <CustomLink>
+          <Badge badgeContent={cart.length}>
+            <CustomLink to='#'>
               <CustomShoppingBasket />
             </CustomLink>
+            </Badge>
           </li>
         </IconsButtonGroup>
       </CustomContainer>

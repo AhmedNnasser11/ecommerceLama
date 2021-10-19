@@ -22,7 +22,6 @@ const Drawer = () => {
 
   const [sidebar, setSidebar] = useState(false)
 
-  console.log(sidebar)
   const HandleClick = () => {
     setSidebar(!sidebar);
   };

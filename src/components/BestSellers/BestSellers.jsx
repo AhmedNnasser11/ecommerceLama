@@ -12,6 +12,7 @@ const BestSellers = () => {
         dispatch(getProducts())
     }, [dispatch])
 
+
     return (
         <>
             <SectionSlides headTitle='Best Sellers' products={products} navigateTo='/'/>

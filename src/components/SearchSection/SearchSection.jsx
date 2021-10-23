@@ -1,7 +1,12 @@
+import { CardTravelRounded } from "@mui/icons-material";
 import { Badge } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCart, selectedProducts } from "../../features/products/ProductsSlice";
+import {
+  getCart,
+  getUser,
+  selectedProducts,
+} from "../../features/products/ProductsSlice";
 import Drawer from "../DrawerComponent/Drawer";
 import {
   SearchSectionContainer,
@@ -19,14 +24,22 @@ import {
 } from "./SearchSectionStyle";
 
 const SearchSection = () => {
-
+  const { user } = useSelector(selectedProducts);
   const { cart } = useSelector(selectedProducts);
-  const dispatch = useDispatch()
+  const { likeIt } = useSelector(selectedProducts);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCart())
-    
-  }, [dispatch])
+    dispatch(getUser());
+  }, []);
+
+  useEffect(() => {
+    const userId = user.id;
+    if (userId) {
+      dispatch(getCart(userId));
+    }
+  }, [user]);
+
   return (
     <SearchSectionContainer>
       <CustomContainer>
@@ -39,27 +52,29 @@ const SearchSection = () => {
             <option value="Clothing">Clothing</option>
             <option value="Shoes">Shoes</option>
           </Select>
-          <CustomSearchInput placeholder='Search...' type="search" />
+          <CustomSearchInput placeholder="Search..." type="search" />
           <CustomSearch />
         </SearchAndOption>
 
         <IconsButtonGroup>
           <li>
-            <CustomLink>
-              <CustomFavorite />
-            </CustomLink>
+            <Badge badgeContent={likeIt.length || 0}>
+              <CustomLink>
+                <CustomFavorite />
+              </CustomLink>
+            </Badge>
           </li>
           <li>
-            <CustomLink>
+            <CustomLink to="#">
               <CustomPerson />
             </CustomLink>
           </li>
 
           <li>
-          <Badge badgeContent={cart.length}>
-            <CustomLink to='#'>
-              <CustomShoppingBasket />
-            </CustomLink>
+            <Badge badgeContent={cart.length ? cart.length + 1 : 0}>
+              <CustomLink to="/cart">
+                <CustomShoppingBasket />
+              </CustomLink>
             </Badge>
           </li>
         </IconsButtonGroup>

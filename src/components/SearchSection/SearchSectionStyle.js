@@ -49,6 +49,7 @@ export const Logo = styled.span`
     text-transform: uppercase;
     @media (max-width: 828px) {
     margin: 0 auto;
+    font-size: 20px;
   }
 `
 export const SearchAndOption = styled.div`

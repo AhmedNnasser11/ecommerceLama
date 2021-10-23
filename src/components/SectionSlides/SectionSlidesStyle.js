@@ -12,6 +12,10 @@ export const BestSellersContainer = styled.section`
             text-transform: uppercase;
             color: #595959;
             font-weight: bold;
+            font-size: 25px;
+            @media (max-width: 828px) {
+    font-size: 20px;
+  }
         }
     }
     .line{

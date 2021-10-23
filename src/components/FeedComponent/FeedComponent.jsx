@@ -1,21 +1,21 @@
 import React from "react";
-import { CustomLink, FeedComponentContainer } from "./FeedComponentStyle";
+import { CustomLink, FeedComponentContainer, Info, Price, Title, TitleProduct } from "./FeedComponentStyle";
 
-const FeedComponent = ({ title, data, navigateTo }) => {
+const FeedComponent = ({ title, data }) => {
   return (
     <FeedComponentContainer>
-      <h3>{title}</h3>
+      <Title>{title}</Title>
       <ul>
         {data.map((item) => (
           <li key={item.id}>
-            <CustomLink className='link__container' to={navigateTo}>
+            <CustomLink className='link__container' to={`/products/${item.id}`}>
               <div className="img__container">
                 <img src={item.image} alt={item.title} />
               </div>
-              <div className="info">
-                <p className="title__Product">{item.title.substr(1, 13)}...</p>
-                <span className="price">${item.price}</span>
-              </div>
+              <Info>
+                <TitleProduct>{item.title.substr(1, 13)}...</TitleProduct>
+                <Price>${item.price}</Price>
+              </Info>
             </CustomLink>
           </li>
         ))}

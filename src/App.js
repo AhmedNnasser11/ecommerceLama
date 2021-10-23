@@ -5,11 +5,11 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { createGlobalStyle } from 'styled-components'
 import BottomNavbar from './components/BottomNavbar/BottomNavbar';
 import SearchSection from './components/SearchSection/SearchSection';
 import TopNavbar from './components/TopNavbar/TopNavbar';
 import { selectedProducts } from './features/products/ProductsSlice';
+import Cart from './pages/Cart/Cart';
 import Home from './pages/Home';
 import ViewDetails from './pages/ViewDetails/ViewDetails';
 
@@ -30,6 +30,9 @@ function App() {
         <Route exact path="/products/:id">
           <ViewDetails />
         </Route>
+        <Route exact path="/cart">
+          <Cart />
+        </Route>
       </Switch>
     </Router>
     ) : 'No User'}
@@ -40,6 +43,3 @@ function App() {
 
 export default App;
 
-const GlobalStyle = createGlobalStyle`
-  
-`

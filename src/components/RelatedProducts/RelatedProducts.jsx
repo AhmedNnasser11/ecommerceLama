@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { selectedProducts } from '../../features/products/ProductsSlice';
 import SectionSlides from '../SectionSlides/SectionSlides';
 
-const EndSoonSlider = () => {
+const RelatedProducts = () => {
 
     const {products} = useSelector(selectedProducts)
     // const dispatch = useDispatch()
@@ -14,9 +14,9 @@ const EndSoonSlider = () => {
 
     return (
         <>
-            <SectionSlides headTitle='End Soon' products={products} navigateTo='/' slideShow/>
+            <SectionSlides headTitle='Related Products' products={products} navigateTo='/' slideShow/>
         </>
     )
 }
 
-export default EndSoonSlider
+export default RelatedProducts

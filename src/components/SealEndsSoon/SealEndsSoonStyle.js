@@ -74,6 +74,9 @@ export const OurContainer = styled.div`
     }
     .info h3 {
       font-size: 35px;
+      @media (max-width: 828px) {
+    font-size: 25px;
+  }
     }
 
     .info p {
@@ -81,6 +84,9 @@ export const OurContainer = styled.div`
       text-align: center;
       line-height: 1.5;
       width: 70%;
+      @media (max-width: 828px) {
+    font-size: 18px;
+  }
     }
     .slick-prev::before,
     .slick-next::before {

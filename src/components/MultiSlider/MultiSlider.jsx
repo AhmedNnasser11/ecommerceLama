@@ -11,6 +11,9 @@ import {
 import { Link } from "react-router-dom";
 import { SliderContainerBestSellers } from "./MultiSliderStyle";
 import { IconButton } from "@mui/material";
+import {useDispatch} from 'react-redux'
+import { addToCart, likeItFunc, selectedProducts } from "../../features/products/ProductsSlice";
+import { useSelector } from "react-redux";
 
 const CustomNextArrow = (props) => {
   const { className, onClick } = props;
@@ -31,6 +34,12 @@ const CustomPrevArrow = (props) => {
 };
 
 const MultiSlider = ({ data, slideShow }) => {
+
+  const dispatch = useDispatch()
+  const { productCounter } = useSelector(selectedProducts);
+  const { user } = useSelector(selectedProducts);
+
+
   const settings = {
     infinite: true,
     speed: 500,
@@ -81,11 +90,28 @@ const MultiSlider = ({ data, slideShow }) => {
                 />
                 <p className="quick__view">QUICK VIEW</p>
                 <div className="icons__container">
-                  <IconButton>
+                  <IconButton onClick={(e)=> {
+                    e.preventDefault()
+                    dispatch(
+                      likeItFunc({
+                        productId: item.id,
+                        userId: user.id,
+                      })
+                    )
+                  }}>
                     <FavoriteBorder />
                   </IconButton>
 
-                  <IconButton>
+                  <IconButton onClick={(e)=> {
+                    e.preventDefault()
+                    dispatch(
+                      addToCart({
+                        productId: item.id,
+                        userId: user.id,
+                        quantity: productCounter,
+                      })
+                    )
+                  }}>
                     <ShoppingBasket />
                   </IconButton>
                 </div>

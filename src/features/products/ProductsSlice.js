@@ -2,20 +2,25 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  user: [
-    {
-      username: "mor_2314",
-      password: "83r5^_",
-    },
-  ],
+  user: [],
   products: [],
   manClothes: [],
   womanClothes: [],
   productDetails: [],
   productCounter: 1,
-  cart: [{ userId: 0, date: 0, products: [{ productId: 0, quantity: 0 }] }],
+  cart: [],
+  likeIt: [],
+  productCartDetails: [],
+  
   status: "idle",
 };
+
+export const getUser = createAsyncThunk("products/getUser", async () => {
+  return await axios
+    .get(`https://fakestoreapi.com/users/3`)
+    .then((res) => res.data);
+});
+
 
 export const getProducts = createAsyncThunk(
   "products/getProducts",
@@ -52,25 +57,33 @@ export const getProductsDetail = createAsyncThunk(
       .then((res) => res.data);
   }
 );
-export const getCart = createAsyncThunk("products/getCart", async () => {
+export const getCart = createAsyncThunk("products/getCart", async (userId) => {
   return await axios
-    .get(`https://fakestoreapi.com/carts/user/3`)
+    .get(`https://fakestoreapi.com/carts/user/${userId}`)
     .then((res) => res.data);
 });
 
 export const addToCart = createAsyncThunk(
   "products/addToCart",
-  async (productId, userId, quantity) => {
-    return await axios("https://fakestoreapi.com/carts", {
-      method: "POST",
-      body: JSON.stringify({
+  async ({productId, userId, quantity}) => {
+    return await axios.post("https://fakestoreapi.com/carts", {
         userId,
         date: Date().toLocaleString(),
         products: [{ productId, quantity }],
-      }),
-    }).then((res) => res.data);
+    })
+    .then((res) => res.data);
   }
 );
+
+export const getProductsCartDetail = createAsyncThunk(
+  "products/getProductsCartDetail",
+  async (paramData) => {
+      return await axios.get(`https://fakestoreapi.com/${paramData}`)
+      .then(
+          res => res.data
+      )
+  }
+)
 
 export const productsSlice = createSlice({
   name: "products",
@@ -85,8 +98,18 @@ export const productsSlice = createSlice({
     decrement: (state) => {
       state.productCounter -= 1;
     },
+    CleanUpProductCounter: (state) => {
+      state.productCounter = 1;
+    },
+    likeItFunc: (state, {payload}) => {
+      state.likeIt = [...state.likeIt, payload];
+    },
   },
   extraReducers: {
+    [getUser.fulfilled]: (state, { payload }) => {
+      state.status = "success";
+      state.user = payload;
+    },
     [getCart.fulfilled]: (state, { payload }) => {
       state.status = "success";
       state.cart = payload;
@@ -117,11 +140,17 @@ export const productsSlice = createSlice({
       state.status = "pending";
     },
 
+    [getProductsCartDetail.fulfilled]: (state, {payload}) => {
+      state.productCartDetails.push(payload)
+  },
+
     [addToCart.fulfilled]: (state, { payload }) => {
       state.status = "success";
       // state.cart.push(payload);
       state.cart = [...state.cart, payload];
     },
+
+
     [addToCart.rejected]: (state) => {
       state.status = "failed";
     },
@@ -129,7 +158,7 @@ export const productsSlice = createSlice({
 });
 
 export const selectedProducts = (state) => state.products;
-export const { increment, decrement, cleanUpproductDetails } =
+export const { increment, decrement, cleanUpproductDetails, CleanUpProductCounter, likeItFunc } =
   productsSlice.actions;
 
 export default productsSlice.reducer;

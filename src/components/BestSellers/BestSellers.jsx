@@ -7,7 +7,6 @@ const BestSellers = () => {
 
     const {products} = useSelector(selectedProducts)
     const dispatch = useDispatch()
-    console.log(products)
     useEffect(() => {
         dispatch(getProducts())
     }, [dispatch])

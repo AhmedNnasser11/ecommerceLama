@@ -6,7 +6,7 @@ export const ViewDetailsContainer = styled.section`
   height: 100%;
   margin-top: 35px;
   .img__detail {
-    width: 374px;
+    width: 100%;
     height: 360px;
     object-fit: contain;
   }
@@ -14,12 +14,6 @@ export const ViewDetailsContainer = styled.section`
     text-transform: uppercase;
     color: #595959;
     font-weight: bold;
-  }
-  p{
-    color: #111;
-    font-weight: bold;
-    font-size: 1.5em;
-    margin: .5em 0;
   }
   article{
     margin-bottom: 1.3em;
@@ -74,4 +68,11 @@ export const AddToCart = styled(Button)`
   &:hover{
     background-color: #005F6A !important;
   }
+`
+
+export const Price = styled.p`
+ color: #111;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: .5em 0;
 `

@@ -22,16 +22,16 @@ const Feed = () => {
             <Container className='custom__container'>
             <FeedGridContainer container spacing='10'>
                 <Grid item xs={12} md={3}>
-                    <FeedComponent title='Latest' data={manClothes} navigateTo='/'/>
+                    <FeedComponent title='Latest' data={manClothes} />
                 </Grid>
                 <Grid item xs={12} md={3}>
-                    <FeedComponent title='Best Selling' data={womanClothes} navigateTo='/'/>
+                    <FeedComponent title='Best Selling' data={womanClothes}/>
                 </Grid>
                 <Grid item xs={12} md={3}>
                     <FeedComponent title='Featured' data={manClothes} navigateTo='/'/>
                 </Grid>
                 <Grid item xs={12} md={3}>
-                    <FeedComponent title='Top rated products' data={womanClothes} navigateTo='/'/>
+                    <FeedComponent title='Top rated products' data={womanClothes} />
                 </Grid>
             </FeedGridContainer>
             </Container>

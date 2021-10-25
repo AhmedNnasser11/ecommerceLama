@@ -51,7 +51,7 @@ const Drawer = () => {
             </SearchAndOption>
           </li>
           {SidebarData.map((item, index) => {
-              return <SidebarElement key={index} item={item}/>;
+              return <SidebarElement key={index} item={item} HandleClick={HandleClick}/>;
             })}
           
         </ThisListItem>

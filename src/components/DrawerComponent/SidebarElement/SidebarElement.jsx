@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { CustomLink, ElementContainer } from "./SidebarElementStyle";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-
-const SidebarElement = ({ item }) => {
+const SidebarElement = ({ item, HandleClick }) => {
   const [dropdown, setDropdown] = useState(false);
 
   const shwoDropDown = () => {
@@ -13,7 +12,7 @@ const SidebarElement = ({ item }) => {
   return (
     <ElementContainer>
       <div className="tabs__container">
-        <CustomLink to={item.path}>{item.title}</CustomLink>
+        <CustomLink to={item.path} onClick={() => HandleClick()}>{item.title}</CustomLink>
 
         {item.subNav ? (
           <IconButton onClick={() => shwoDropDown()}>
@@ -28,7 +27,7 @@ const SidebarElement = ({ item }) => {
             {item.subNav.map((item, index) => {
               return (
                 <li key={index}>
-                  <CustomLink to={item.path}>{item.title}</CustomLink>
+                  <CustomLink to={item.path} onClick={() => HandleClick()}>{item.title}</CustomLink>
                 </li>
               );
             })}

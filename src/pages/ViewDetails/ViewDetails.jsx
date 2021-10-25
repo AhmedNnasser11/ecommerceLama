@@ -28,6 +28,7 @@ import DesAndReview from "../../components/DesAndReview/DesAndReview";
 import RelatedProducts from '../../components/RelatedProducts/RelatedProducts'
 import Feed from "../../components/Feed/Feed";
 import Footer from "../../components/Footer/Footer"
+import LoadingPage from "../LoadingPage/LoadingPage";
 
 const ViewDetails = () => {
   const { id } = useParams();
@@ -44,7 +45,9 @@ const ViewDetails = () => {
   }, [dispatch, id]);
 
   return (
-    <ViewDetailsContainer>
+    <>
+    {productDetails.length === 0 ? <LoadingPage /> : (
+      <ViewDetailsContainer>
       <Container>
         <Grid container spacing={2}>
           <CustomSideBarGrid item xs={3}>
@@ -111,6 +114,9 @@ const ViewDetails = () => {
       </Container>
       <Footer />
     </ViewDetailsContainer>
+    )}
+    </>
+   
   );
 };
 

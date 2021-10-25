@@ -8,7 +8,9 @@ export const CartProductDetailContainer = styled.section`
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 20px;
-
+  @media (max-width: 855px) {
+    padding-right: 0;
+}
 `;
 
 export const TitleContainer = styled.section`
@@ -119,6 +121,10 @@ export const CloseIcon = styled(HighlightOffOutlinedIcon)`
 export const IamgeContainer = styled.div`
     width: 80px;
     height: 95px;
+    @media (max-width: 534px) {
+      width: 70px;
+      height: 80px;
+    }
 `
 export const Image = styled.img`
     width: 100%;
@@ -128,7 +134,8 @@ export const Image = styled.img`
 
 export const Title = styled.p`
    @media (max-width: 534px) {
-     width: 130px !important;
+     width: 100px !important;
+     font-size: 12px;
     }
 `
 
@@ -149,6 +156,14 @@ export const OurButtonGroup = styled.div`
     display: flex;
     column-gap: 10px;
     text-transform: capitalize;
+    @media (max-width: 434px) {
+      display: flex;
+      flex-direction: column;
+      row-gap: 7px;
+      .continue__shopping{
+        width: 100%;
+      }
+    }
 `
 
 export const CustomArrowRight = styled(ArrowRightAltIcon)`

@@ -18,7 +18,7 @@ const Cart = () => {
             <CartProductDetail />
             <OurButtonGroup>
                 <Link to='/' style={{textDecoration: 'none'}}>
-                    <ContinueShopping startIcon={<CustomArrowRight />} variant="outlined"> Continue shopping</ContinueShopping>
+                    <ContinueShopping startIcon={<CustomArrowRight />} variant="outlined" className='continue__shopping'> Continue shopping</ContinueShopping>
                 </Link>
               <UpDateCart variant="contained">UpDate Cart</UpDateCart>
             </OurButtonGroup>

@@ -34,10 +34,11 @@ export const ThisListItem = styled.ul`
   z-index: 999;
   width: 350px;
   height: 100vh;
+  overflow-y: scroll;
   list-style: none;
   transform: translateX(-100vw);
   transition: .3s transform ease;
-  margin-top: 80%;
+  margin-top: 40%;
   &.active{
     transform: translateX(0) !important;
     transition: .3s transform ease;

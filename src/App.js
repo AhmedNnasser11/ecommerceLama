@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import ViewDetails from "./pages/ViewDetails/ViewDetails";
 import "./App.css";
 import { useEffect } from "react";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -29,8 +30,6 @@ function App() {
     }
   };
 
-
-
   useEffect(() => {
     window.addEventListener("scroll", hundleScroll);
     return () => {
@@ -49,18 +48,19 @@ function App() {
             <SearchSection />
             <BottomNavbar />
           </div>
-
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/products/:id">
-              <ViewDetails />
-            </Route>
-            <Route exact path="/cart">
-              <Cart />
-            </Route>
-          </Switch>
+          <ScrollToTop>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/products/:id">
+                <ViewDetails />
+              </Route>
+              <Route exact path="/cart">
+                <Cart />
+              </Route>
+            </Switch>
+          </ScrollToTop>
         </Router>
       )}
     </>

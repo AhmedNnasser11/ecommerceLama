@@ -8,6 +8,10 @@ export const CartTotalContainer = styled.section`
   padding-bottom: 10px;
   padding-left: 30px;
   border-left: 2px solid #ececec;
+  @media (max-width: 855px) {
+    padding-left: 0;
+    border-left: none;
+}
 
 `;
 export const CartTotalTitleContainer = styled.div`

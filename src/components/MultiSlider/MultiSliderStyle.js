@@ -58,6 +58,10 @@ export const SliderContainerBestSellers = styled.div`
     margin-left: 20px;
     margin-right: 20px;
     height: 215px;
+    @media (max-width: 480px) {
+      margin-left: 0px;
+    margin-right: 0px;
+    }
   }
   .img__slider__bestSellars {
     width: 100%;
@@ -87,11 +91,11 @@ export const SliderContainerBestSellers = styled.div`
   .info__bestSellars {
     display: flex;
     flex-direction: column;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
     @media (max-width: 480px) {
-      padding-left: 114px;
-      padding-right: 114px;
+      padding-left: 90px;
+    padding-right: 45px;
     }
   }
   .quick__view {

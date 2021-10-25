@@ -1,9 +1,8 @@
-import { CardTravelRounded } from "@mui/icons-material";
-import { Badge } from "@mui/material";
 import React, { useEffect } from "react";
+import { Badge} from "@mui/material";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getCart,
   getUser,
   selectedProducts,
 } from "../../features/products/ProductsSlice";
@@ -24,21 +23,14 @@ import {
 } from "./SearchSectionStyle";
 
 const SearchSection = () => {
-  const { user } = useSelector(selectedProducts);
   const { cart } = useSelector(selectedProducts);
   const { likeIt } = useSelector(selectedProducts);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUser());
-  }, []);
-
-  useEffect(() => {
-    const userId = user.id;
-    if (userId) {
-      dispatch(getCart(userId));
-    }
-  }, [user]);
+  }, [dispatch]);
 
   return (
     <SearchSectionContainer>
@@ -58,8 +50,8 @@ const SearchSection = () => {
 
         <IconsButtonGroup>
           <li>
-            <Badge badgeContent={likeIt.length || 0}>
-              <CustomLink>
+            <Badge badgeContent={likeIt?.length}>
+              <CustomLink to="#">
                 <CustomFavorite />
               </CustomLink>
             </Badge>
@@ -71,11 +63,13 @@ const SearchSection = () => {
           </li>
 
           <li>
-            <Badge badgeContent={cart.length ? cart.length + 1 : 0}>
-              <CustomLink to="/cart">
+          <CustomLink to="/cart">
+
+            <Badge badgeContent={cart?.length}>
                 <CustomShoppingBasket />
-              </CustomLink>
-            </Badge>
+            </Badge> 
+            </CustomLink>
+          
           </li>
         </IconsButtonGroup>
       </CustomContainer>

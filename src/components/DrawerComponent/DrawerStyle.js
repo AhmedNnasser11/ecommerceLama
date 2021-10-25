@@ -1,5 +1,4 @@
 import { Search } from "@mui/icons-material";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const DrawerContainer = styled.div`

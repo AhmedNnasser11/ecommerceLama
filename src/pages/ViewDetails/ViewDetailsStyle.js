@@ -1,4 +1,4 @@
-import { Grid, Button, Badge } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 
 import styled from "styled-components";
 export const ViewDetailsContainer = styled.section`

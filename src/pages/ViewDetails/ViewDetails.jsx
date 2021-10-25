@@ -34,7 +34,6 @@ const ViewDetails = () => {
   const dispatch = useDispatch();
   const { productDetails } = useSelector(selectedProducts);
   const { productCounter } = useSelector(selectedProducts);
-  const { user } = useSelector(selectedProducts);
 
   useEffect(() => {
     dispatch(getProductsDetail(`products/${id}`));
@@ -53,7 +52,7 @@ const ViewDetails = () => {
           </CustomSideBarGrid>
           <Grid item container columnSpacing={2} xs={12} sm={9} md={9}>
             <Grid item xs={12} md={5}>
-              <img src={productDetails.image} className="img__detail" />
+              <img src={productDetails.image} alt={productDetails.title} className="img__detail" />
             </Grid>
             <Grid item xs={12} md={7}>
               <h3>{productDetails.title}</h3>
@@ -82,8 +81,12 @@ const ViewDetails = () => {
                     onClick={() =>
                       dispatch(
                         addToCart({
-                          productId: id,
-                          userId: user.id,
+                          id: id,
+                          title: productDetails.title,
+                          price: productDetails.price,
+                          description: productDetails.description,
+                          category: productDetails.category,
+                          image: productDetails.image,
                           quantity: productCounter,
                         })
                       )

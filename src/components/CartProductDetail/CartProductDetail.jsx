@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getProductsCartDetail, selectedProducts } from "../../features/products/ProductsSlice";
+import React from "react";
 import {
   CartProductDetailContainer,
- 
   Price,
   Product,
   ProductInfo,
@@ -15,7 +12,6 @@ import {
 import ProductSellInfoComponent from "./ProductSellInfo/ProductSellInfo";
 
 const CartProductDetail = () => {
-  const { cart } = useSelector(selectedProducts);
 
   return (
     <CartProductDetailContainer>
@@ -29,14 +25,6 @@ const CartProductDetail = () => {
       </TitleContainer>
 
       {/* start ProductInfoContainer */}
-
-        {cart.map((product) => {
-        return product.products.map((item) => {
-          return (
-            <GetCartData key={item.productId} productId={item.productId} />
-          );
-        });
-      })}
         <ProductSellInfoComponent />
 
       {/* end ProductInfoContainer */}
@@ -45,12 +33,3 @@ const CartProductDetail = () => {
 };
 
 export default CartProductDetail;
-
-const GetCartData = (props) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getProductsCartDetail(`products/${props.productId}`));
-  }, [dispatch, props.productId]);
-  return null
-}

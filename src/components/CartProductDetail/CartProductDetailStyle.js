@@ -5,7 +5,10 @@ import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
 
 export const CartProductDetailContainer = styled.section`
   width: 100%;
-  margin-top: 53px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+
 `;
 
 export const TitleContainer = styled.section`
@@ -35,11 +38,18 @@ export const ProductInfo = styled.ul`
   flex: 0.5;
 `;
 export const Price = styled.li`
+  width: 75px;
+  display: flex;
+  justify-content: flex-end;
+  @media (max-width: 534px) {
+     display: none;
+    }
 `;
 
 export const Quantity = styled.li`
     display: flex;
     align-items: center;
+    width: 75px;
 `;
 export const CustomButton = styled(Button)`
   color: #777777 !important;
@@ -58,7 +68,7 @@ export const CustomButton = styled(Button)`
 export const Number = styled.span`
     border: 1px solid #ddd;
     min-width: 22px !important;
-  height: 33px;
+    height: 33px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,6 +76,12 @@ export const Number = styled.span`
 `
 
 export const Subtotal = styled.li`
+  width: 75px;
+  display: flex;
+  justify-content: center;
+  @media (max-width: 534px) {
+     display: none;
+    }
 `;
 
 export const ProductInfoContainer = styled(TitleContainer)`
@@ -76,7 +92,17 @@ export const XAndImg = styled(Product)`
     display: flex;
     align-items: center;
     column-gap: 12px;
+    @media (max-width: 534px) {
+     flex: .7 !important;
+    }
 `
+export const QutityAndPrice  = styled.p`
+font-size: 12px;
+  @media (min-width: 534px) {
+      display: none;
+    }
+`
+export const ResponsiveContainer = styled.div``
 
 export const Delete = styled(IconButton)`
    
@@ -100,17 +126,22 @@ export const Image = styled.img`
     object-fit: contain;
 `
 
-export const Title = styled.p``
+export const Title = styled.p`
+   @media (max-width: 534px) {
+     width: 130px !important;
+    }
+`
 
 export const ProductSellInfo = styled(ProductInfo)`
     display: flex;
     flex: 0.5;
     align-items: center;
-    column-gap: 40px;
+    column-gap: 25px;
 `
 
 export const QuantityEdite = styled(Quantity)`
-    margin-right: 25px;
+   display: flex;
+  justify-content: flex-end;
 `
 
 export const OurButtonGroup = styled.div`

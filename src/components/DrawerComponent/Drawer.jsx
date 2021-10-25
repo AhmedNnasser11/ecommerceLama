@@ -10,8 +10,6 @@ import {
 } from "./DrawerStyle";
 import {
   Menu,
-  KeyboardArrowDown,
-  KeyboardArrowUP,
   Close,
 } from "@mui/icons-material";
 import { IconButton } from "@mui/material";

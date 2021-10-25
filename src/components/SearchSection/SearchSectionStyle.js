@@ -1,5 +1,5 @@
 import { Search, Favorite, Person, ShoppingBasket } from "@mui/icons-material";
-import { Badge, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";

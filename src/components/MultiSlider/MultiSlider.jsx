@@ -106,8 +106,12 @@ const MultiSlider = ({ data, slideShow }) => {
                     e.preventDefault()
                     dispatch(
                       addToCart({
-                        productId: item.id,
-                        userId: user.id,
+                        id: item.id,
+                        title: item.title,
+                        price: item.price,
+                        description: item.description,
+                        category: item.category,
+                        image: item.image,
                         quantity: productCounter,
                       })
                     )

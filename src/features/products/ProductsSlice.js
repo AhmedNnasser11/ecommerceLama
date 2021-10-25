@@ -8,10 +8,30 @@ const initialState = {
   womanClothes: [],
   productDetails: [],
   productCounter: 1,
-  cart: [],
+  cart: [
+    {
+      id: 8,
+      title: "Pierced Owl Rose Gold Plated Stainless Steel Double",
+      price: 10.99,
+      description:
+        "Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel",
+      category: "jewelery",
+      image: "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
+      quantity: 3,
+    },
+    {
+      id: 7,
+      title: "White Gold Plated Princess",
+      price: 9.99,
+      description:
+        "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...",
+      category: "jewelery",
+      image: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
+      quantity: 5,
+    },
+  ],
   likeIt: [],
-  productCartDetails: [],
-  
+
   status: "idle",
 };
 
@@ -20,7 +40,6 @@ export const getUser = createAsyncThunk("products/getUser", async () => {
     .get(`https://fakestoreapi.com/users/3`)
     .then((res) => res.data);
 });
-
 
 export const getProducts = createAsyncThunk(
   "products/getProducts",
@@ -57,33 +76,23 @@ export const getProductsDetail = createAsyncThunk(
       .then((res) => res.data);
   }
 );
-export const getCart = createAsyncThunk("products/getCart", async (userId) => {
-  return await axios
-    .get(`https://fakestoreapi.com/carts/user/${userId}`)
-    .then((res) => res.data);
-});
 
-export const addToCart = createAsyncThunk(
-  "products/addToCart",
-  async ({productId, userId, quantity}) => {
-    return await axios.post("https://fakestoreapi.com/carts", {
-        userId,
+
+
+export const upDateProductCart = createAsyncThunk(
+  "products/upDateProductCart",
+  async ({ productId, userId, quantity }) => {
+    return await axios
+      .patch(`https://fakestoreapi.com/carts/${productId}`, {
+        userId: userId,
         date: Date().toLocaleString(),
-        products: [{ productId, quantity }],
-    })
-    .then((res) => res.data);
+        products: [{ productId: productId, quantity: quantity }],
+      })
+      .then((res) => res.data);
   }
 );
 
-export const getProductsCartDetail = createAsyncThunk(
-  "products/getProductsCartDetail",
-  async (paramData) => {
-      return await axios.get(`https://fakestoreapi.com/${paramData}`)
-      .then(
-          res => res.data
-      )
-  }
-)
+export const getCartTotal = (cart) => cart?.reduce((amount, item) => item.price * item.quantity + amount, 0)
 
 export const productsSlice = createSlice({
   name: "products",
@@ -91,6 +100,9 @@ export const productsSlice = createSlice({
   reducers: {
     cleanUpproductDetails: (state) => {
       state.productDetails = [];
+    },
+    cleanUpCartDetails: (state) => {
+      state.productCartDetails = [];
     },
     increment: (state) => {
       state.productCounter += 1;
@@ -101,18 +113,23 @@ export const productsSlice = createSlice({
     CleanUpProductCounter: (state) => {
       state.productCounter = 1;
     },
-    likeItFunc: (state, {payload}) => {
+    likeItFunc: (state, { payload }) => {
       state.likeIt = [...state.likeIt, payload];
+    },
+    addToCart: (state, {payload}) => {
+      state.cart = [...state.cart, payload];
+    },
+    deleteCartProduct: (state, { payload }) => {
+      const newinfo = state.cart.filter(
+        (info) => info.id !== payload
+      );
+      state.cart = newinfo;
     },
   },
   extraReducers: {
     [getUser.fulfilled]: (state, { payload }) => {
       state.status = "success";
       state.user = payload;
-    },
-    [getCart.fulfilled]: (state, { payload }) => {
-      state.status = "success";
-      state.cart = payload;
     },
     [getProducts.fulfilled]: (state, { payload }) => {
       state.status = "success";
@@ -136,29 +153,20 @@ export const productsSlice = createSlice({
     [getProductsDetail.rejected]: (state) => {
       state.status = "failed";
     },
-    [addToCart.pending]: (state) => {
-      state.status = "pending";
-    },
-
-    [getProductsCartDetail.fulfilled]: (state, {payload}) => {
-      state.productCartDetails.push(payload)
-  },
-
-    [addToCart.fulfilled]: (state, { payload }) => {
-      state.status = "success";
-      // state.cart.push(payload);
-      state.cart = [...state.cart, payload];
-    },
-
-
-    [addToCart.rejected]: (state) => {
-      state.status = "failed";
-    },
   },
 });
 
 export const selectedProducts = (state) => state.products;
-export const { increment, decrement, cleanUpproductDetails, CleanUpProductCounter, likeItFunc } =
-  productsSlice.actions;
+export const {
+  deleteCartProduct,
+  increment,
+  decrement,
+  cleanUpproductDetails,
+  CleanUpProductCounter,
+  likeItFunc,
+  cleanUpCartDetails,
+  addToCart,
+  
+} = productsSlice.actions;
 
 export default productsSlice.reducer;

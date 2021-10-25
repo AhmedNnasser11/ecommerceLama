@@ -1,9 +1,10 @@
 import { AddRounded, RemoveRounded } from "@mui/icons-material";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
+  deleteCartProduct,
   selectedProducts,
-  getProductsCartDetail,
 } from "../../../features/products/ProductsSlice";
 import {
   ProductInfoContainer,
@@ -19,41 +20,50 @@ import {
   IamgeContainer,
   Image,
   Title,
-  CloseIcon
+  CloseIcon,
+  QutityAndPrice,
+  ResponsiveContainer
 } from "../CartProductDetailStyle";
 
-const ProductSellInfoComponent = (props) => {
-  const { productCartDetails } = useSelector(selectedProducts);
+const ProductSellInfoComponent = () => {
+  const { cart } = useSelector(selectedProducts);
+
+  const dispatch = useDispatch()
 
 
   return (
     <>
-      {productCartDetails.map((item) => (
-
+      {cart.map((item) => (
+        
       <ProductInfoContainer key={item.id}>
         <Product>
           <XAndImg>
-            <Delete>
+            <Delete
+              onClick={() => dispatch(deleteCartProduct(item.id))}
+            >
               <CloseIcon />
             </Delete>
             <IamgeContainer>
               <Image src={item.image} />
             </IamgeContainer>
-            <Title>{item.title.substr(1, 13)}...</Title>
+            <ResponsiveContainer>
+            <Title>{item.title?.substr(1, 13)}...</Title><br/>
+            <QutityAndPrice>{item.quantity} x ${item.price}</QutityAndPrice>
+            </ResponsiveContainer>
           </XAndImg>
         </Product>
         <ProductSellInfo>
-          <Price>{item.price}</Price>
+          <Price>${item.price}</Price>
           <QuantityEdite>
             <CustomButton size="small">
               <AddRounded style={{ fontSize: "12px" }} />
             </CustomButton>
-            <Number>{props.quantity}</Number>
+            <Number>{item.quantity}</Number>
             <CustomButton size="small">
               <RemoveRounded style={{ fontSize: "12px" }} />
             </CustomButton>
           </QuantityEdite>
-          <Subtotal>$33</Subtotal>
+          <Subtotal>${item.quantity * item.price}</Subtotal>
         </ProductSellInfo>
       </ProductInfoContainer>
 

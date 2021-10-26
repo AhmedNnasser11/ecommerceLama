@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LoadingPage from "./pages/LoadingPage/LoadingPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import BottomNavbar from "./components/BottomNavbar/BottomNavbar";
 import SearchSection from "./components/SearchSection/SearchSection";
 import TopNavbar from "./components/TopNavbar/TopNavbar";
+
 import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home";
 import ViewDetails from "./pages/ViewDetails/ViewDetails";
 import "./App.css";
-import { useEffect } from "react";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [navbar, setNavbar] = useState(false);
+
 
   useEffect(() => {
     window.addEventListener("onload", setLoading(false));

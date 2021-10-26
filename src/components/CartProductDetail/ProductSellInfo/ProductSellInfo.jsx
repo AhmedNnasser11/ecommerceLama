@@ -4,7 +4,9 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {
   deleteCartProduct,
+  incrementProductCartQuantity,
   selectedProducts,
+  decrementProductCartQuantity
 } from "../../../features/products/ProductsSlice";
 import {
   ProductInfoContainer,
@@ -55,11 +57,19 @@ const ProductSellInfoComponent = () => {
         <ProductSellInfo>
           <Price>${item.price}</Price>
           <QuantityEdite>
-            <CustomButton size="small">
+            <CustomButton size="small" onClick={() => {
+              dispatch(
+                incrementProductCartQuantity({id: item.id})
+              )
+            }}> 
               <AddRounded style={{ fontSize: "12px" }} />
             </CustomButton>
             <Number>{item.quantity}</Number>
-            <CustomButton size="small">
+            <CustomButton size="small" onClick={() => {
+              dispatch(
+                decrementProductCartQuantity({id: item.id})
+              )
+            }}>
               <RemoveRounded style={{ fontSize: "12px" }} />
             </CustomButton>
           </QuantityEdite>

@@ -84,7 +84,7 @@ const ViewDetails = () => {
                     onClick={() =>
                       dispatch(
                         addToCart({
-                          id: id,
+                          id: productDetails.id,
                           title: productDetails.title,
                           price: productDetails.price,
                           description: productDetails.description,

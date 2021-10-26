@@ -108,7 +108,11 @@ export const productsSlice = createSlice({
       state.productCounter += 1;
     },
     decrement: (state) => {
-      state.productCounter -= 1;
+      if ( state.productCounter > 1) {
+        state.productCounter -= 1
+      }else{
+        return
+      }
     },
     CleanUpProductCounter: (state) => {
       state.productCounter = 1;
@@ -117,7 +121,12 @@ export const productsSlice = createSlice({
       state.likeIt = [...state.likeIt, payload];
     },
     addToCart: (state, {payload}) => {
-      state.cart = [...state.cart, payload];
+      const product = state.cart.find(ele => ele.id === payload.id);
+      if (!product) {
+        state.cart = [...state.cart, payload];
+      }else{
+          return
+      }
     },
     deleteCartProduct: (state, { payload }) => {
       const newinfo = state.cart.filter(
@@ -125,6 +134,12 @@ export const productsSlice = createSlice({
       );
       state.cart = newinfo;
     },
+    incrementProductCartQuantity: (state, {payload}) => {
+       state.cart.find(item => item.id === payload.id ? {...item ,quantity:item.quantity +=1} : null)
+    },
+    decrementProductCartQuantity: (state, {payload}) => {
+      state.cart.find(item => item.id === payload.id && item.quantity > 1 ? {...item ,quantity:item.quantity -=1} : null)
+    }
   },
   extraReducers: {
     [getUser.fulfilled]: (state, { payload }) => {
@@ -135,6 +150,9 @@ export const productsSlice = createSlice({
       state.status = "success";
       state.products = payload;
     },
+    [getProducts.pending]: (state) => {
+      state.status = 'pending';
+    },
     [getProductsMan.fulfilled]: (state, { payload }) => {
       state.status = "success";
       state.manClothes = payload;
@@ -144,7 +162,7 @@ export const productsSlice = createSlice({
       state.womanClothes = payload;
     },
     [getProductsDetail.pending]: (state) => {
-      state.status = false;
+      state.status = 'pending';
     },
 
     [getProductsDetail.fulfilled]: (state, { payload }) => {
@@ -166,6 +184,8 @@ export const {
   likeItFunc,
   cleanUpCartDetails,
   addToCart,
+  incrementProductCartQuantity,
+  decrementProductCartQuantity
   
 } = productsSlice.actions;
 

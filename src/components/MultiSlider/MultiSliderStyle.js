@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const SliderContainerBestSellers = styled.div`
@@ -17,7 +18,6 @@ export const SliderContainerBestSellers = styled.div`
     z-index: 5;
     padding-left: 20px;
     padding-right: 20px;
-
     .MuiIconButton-root {
       background-color: transparent;
       transition: 0.3s all ease;
@@ -39,6 +39,9 @@ export const SliderContainerBestSellers = styled.div`
     justify-content: center;
     line-height: 1.6;
     overflow: hidden;
+    flex-direction: column;
+    padding-left: 25px;
+    padding-right: 25px;
     &:hover .icons__container {
       opacity: 1;
       transition: 0.3s all ease;
@@ -55,12 +58,10 @@ export const SliderContainerBestSellers = styled.div`
     text-decoration: none;
     position: relative;
     overflow: hidden;
-    margin-left: 20px;
-    margin-right: 20px;
+    width: 100%;
     height: 215px;
     @media (max-width: 480px) {
-      margin-left: 0px;
-    margin-right: 0px;
+   
     }
   }
   .img__slider__bestSellars {
@@ -72,7 +73,7 @@ export const SliderContainerBestSellers = styled.div`
     border-top-right-radius: 5%;
     border-top-left-radius: 5%;
     @media (max-width: 480px) {
-      width: 50%;
+      width: 65%;
     }
   }
   .category__bestSellars {
@@ -80,7 +81,6 @@ export const SliderContainerBestSellers = styled.div`
     letter-spacing: 1px;
     color: #777;
   }
-
   .title__bestSellars {
     font-size: 13px;
     color: #334862;
@@ -89,13 +89,12 @@ export const SliderContainerBestSellers = styled.div`
     color: #111;
   }
   .info__bestSellars {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    padding-left: 25px;
-    padding-right: 25px;
+   
     @media (max-width: 480px) {
-      padding-left: 90px;
-    padding-right: 45px;
+      width: 65%;
     }
   }
   .quick__view {
@@ -111,33 +110,28 @@ export const SliderContainerBestSellers = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 20px;
-    margin-right: 20px;
+   
     @media (max-width: 480px) {
-      width: 50%;
+      width: 65%;
     }
   }
   .our__slide__bestSellars:hover .quick__view {
     bottom: 0;
     transition: 0.3s all ease;
   }
-
   .slick-prev:hover,
   .slick-next:hover {
     outline: none;
   }
-
   .slider__container__bestSellers:hover .slick-prev,
   .slider__container__bestSellers:hover .slick-next {
     opacity: 0.8;
     transition: 0.3s all ease;
   }
-
   .slider__container__bestSellers:hover .slick-prev {
     left: 0;
     transition: 0.3s all ease;
   }
-
   .slider__container__bestSellers:hover .slick-next {
     right: 0;
     transition: 0.3s all ease;
@@ -146,7 +140,6 @@ export const SliderContainerBestSellers = styled.div`
   .slick-next::before {
     display: none;
   }
-
   .slick-prev,
   .slick-next {
     border: 1px solid #fff;
@@ -161,13 +154,11 @@ export const SliderContainerBestSellers = styled.div`
     top: 35%;
     opacity: 0;
   }
-
   .slick-prev {
     left: -5%;
     box-shadow: 6px 2px 5px -3px rgba(0, 0, 0, 0.32);
     transition: 0.3s all ease;
   }
-
   .slick-next {
     right: -5%;
     box-shadow: -5px 2px 5px -3px rgba(0, 0, 0, 0.32);

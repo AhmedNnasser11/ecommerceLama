@@ -13,7 +13,7 @@ const SectionSlides = ( props ) => {
                     <h3>{props.headTitle}</h3>
                     <CustomLink to={props.navigateTo}>BROWSE All <KeyboardArrowRight /></CustomLink>
                 </div>
-                <MultiSlider data={props.products} slideShow={props.slideShow} />
+                <MultiSlider data={props.products} slideShow={props.slideShow} speed={props.speed} scroll={props.scroll}/>
             </Container>
         </BestSellersContainer>
     )

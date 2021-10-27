@@ -39,6 +39,9 @@ export const ViewDetailsContainer = styled.section`
     align-items: center;
     column-gap: 5px;
   }
+  .notAllow{
+    cursor: not-allowed !important;
+  }
 `;
 
 export const CustomSideBarGrid = styled(Grid)`
@@ -60,10 +63,7 @@ export const CustomButton = styled(Button)`
   }
 `
 export const AddToCart = styled(Button)`
-  display: flex !important;
-  height: 43px;
-  align-items: center !important;
-  font-weight: bold !important;
+ 
   background-color: #007784 !important;
   &:hover{
     background-color: #005F6A !important;
@@ -75,4 +75,10 @@ export const Price = styled.p`
     font-weight: bold;
     font-size: 1.5em;
     margin: .5em 0;
+`
+export const Done = styled(Button)`
+   display: flex !important;
+  height: 43px;
+  align-items: center !important;
+  cursor: not-allowed;
 `

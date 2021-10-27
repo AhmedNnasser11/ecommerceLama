@@ -14,7 +14,7 @@ const LatestSale = () => {
 
     return (
         <>
-            <SectionSlides headTitle='Latest On Sale' products={products} navigateTo='/'/>
+            <SectionSlides headTitle='Latest On Sale' products={products} navigateTo='/' speed={1000} scroll={3}/>
         </>
     )
 }

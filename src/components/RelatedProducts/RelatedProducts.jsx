@@ -14,7 +14,7 @@ const RelatedProducts = () => {
 
     return (
         <>
-            <SectionSlides headTitle='Related Products' products={products} navigateTo='/' slideShow/>
+            <SectionSlides headTitle='Related Products' products={products} navigateTo='/' slideShow speed={400} scroll={2}/>
         </>
     )
 }

@@ -14,7 +14,7 @@ const BestSellers = () => {
 
     return (
         <>
-            <SectionSlides headTitle='Best Sellers' products={products} navigateTo='/'/>
+            <SectionSlides headTitle='Best Sellers' products={products} navigateTo='/' speed={300} scroll={2}/>
         </>
     )
 }

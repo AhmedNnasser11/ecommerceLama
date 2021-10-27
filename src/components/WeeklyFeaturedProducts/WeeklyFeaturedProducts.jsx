@@ -14,7 +14,7 @@ const WeeklyFeaturedProducts = () => {
 
     return (
         <>
-            <SectionSlides headTitle='Weekly Featured Products' products={products} navigateTo='/'/>
+            <SectionSlides headTitle='Weekly Featured Products' products={products} navigateTo='/' scroll={2}/>
         </>
     )
 }

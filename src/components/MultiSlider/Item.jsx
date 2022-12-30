@@ -46,7 +46,7 @@ const Item = ({ item }) => {
               dispatch(
                 likeItFunc({
                   productId: item.id,
-                  userId: user.id,
+                  userId: user.id, 
                 })
               );
             }}

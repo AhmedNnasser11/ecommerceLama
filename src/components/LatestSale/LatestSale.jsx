@@ -5,7 +5,7 @@ import SectionSlides from '../SectionSlides/SectionSlides';
 
 const LatestSale = () => {
 
-    const {products} = useSelector(selectedProducts)
+    const { products } = useSelector(selectedProducts)
     // const dispatch = useDispatch()
     // console.log(products)
     // useEffect(() => {
@@ -14,7 +14,7 @@ const LatestSale = () => {
 
     return (
         <>
-            <SectionSlides headTitle='Latest On Sale' products={products} navigateTo='/' speed={1000} scroll={3}/>
+            <SectionSlides headTitle='Latest On Sale' products={products} navigateTo='/' speed={1000} scroll={3} />
         </>
     )
 }

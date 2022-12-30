@@ -12,7 +12,7 @@ import {
   likeItFunc,
   selectedProducts,
 } from "../../features/products/ProductsSlice";
-import {Done, DoneBg} from './ItemStyle'
+import { Done, DoneBg } from './ItemStyle'
 
 const Item = ({ item }) => {
   const [isExit, setIsExit] = useState(false);
@@ -25,7 +25,7 @@ const Item = ({ item }) => {
     const GitItem = cart.find((el) => (el.id === item.id));
     if (GitItem) {
       setIsExit(true)
-    }else{
+    } else {
       return
     }
   }, [cart, item.id]);
@@ -74,9 +74,9 @@ const Item = ({ item }) => {
               <ShoppingBasket />
             </IconButton>
           ) : (
-              <DoneBg onClick={(e) => e.preventDefault()}>
+            <DoneBg onClick={(e) => e.preventDefault()}>
               <Done />
-              </DoneBg>
+            </DoneBg>
           )}
         </div>
       </Link>

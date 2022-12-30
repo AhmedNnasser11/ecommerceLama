@@ -6,7 +6,7 @@ const ReviewProduct = ({ title }) => {
   return (
     <ReviewProductContainer>
       <h4>Review {title}</h4>
-      <form>
+      <form> 
         <div className="rating">
           <label>Your Rating: </label>
           <Rating name="half-rating" defaultValue={0} precision={0.5} />

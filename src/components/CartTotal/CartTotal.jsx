@@ -11,13 +11,13 @@ import {
   SubTotalNumber,
   SubTotalTitle,
   Title,
-} from "./CartTotalStyle"; 
+} from "./CartTotalStyle";
 
 const CartTotal = () => {
     const { cart } = useSelector(selectedProducts);
 
   return (
-    <CartTotalContainer> 
+    <CartTotalContainer>
       <CurrencyFormat
         renderText={(value) => (
           <>

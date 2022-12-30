@@ -61,8 +61,8 @@ function App() {
                 <Cart />
               </Route>
             </Switch>
-          </ScrollToTop> 
-        </Router> 
+          </ScrollToTop>
+        </Router>
       )}
     </>
   );

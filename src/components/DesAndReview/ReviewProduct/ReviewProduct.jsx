@@ -5,8 +5,13 @@ import { ReviewProductContainer } from "./ReviewProductStyle";
 const ReviewProduct = ({ title }) => {
   return (
     <ReviewProductContainer>
+<<<<<<< HEAD
       <h4>Review {title}</h4> 
       <form> 
+=======
+      <h4>Review {title}</h4>
+      <form>
+>>>>>>> parent of db5a103 (test 2)
         <div className="rating">
           <label>Your Rating: </label>
           <Rating name="half-rating" defaultValue={0} precision={0.5} />
